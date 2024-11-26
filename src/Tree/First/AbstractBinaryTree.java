@@ -1,4 +1,4 @@
-package First;
+package Tree.First;
 
 import java.util.List;
 import java.util.function.Consumer;
@@ -20,11 +20,13 @@ public interface AbstractBinaryTree<E> {
 
     void forEachInOrder(Consumer<E> consumer);
 
-    void depthFirstSearch(); // Новый метод
+    void depthFirstSearch();
 
     void breadthFirstSearch();
 
     void toString(StringBuilder sb, String indent);
+
+    String asIndentedPreOrder(int indent);
 
 }
 

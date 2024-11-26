@@ -1,4 +1,4 @@
-package Two;
+package Tree.Two;
 
 public class Node<E> {
 

@@ -1,4 +1,4 @@
-package Two;
+package Tree.Two;
 
 
 public interface AbstractBinarySearchTree<E extends Comparable<E>>  {
@@ -19,4 +19,6 @@ public interface AbstractBinarySearchTree<E extends Comparable<E>>  {
     double calculateAverage();
 
     String calculateStatistics();
+
+    String asIndentedPreOrder(int indent);
 }

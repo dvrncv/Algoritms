@@ -1,4 +1,8 @@
-package Two;
+package Tree.Two;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class BinarySearchTree<E extends Number & Comparable<E>> implements AbstractBinarySearchTree<E> {
 
@@ -120,23 +124,49 @@ public class BinarySearchTree<E extends Number & Comparable<E>> implements Abstr
     }
 
     @Override
-    public String toString() {
+    public String asIndentedPreOrder(int indent) {
+        if (root == null) {
+            return "Дерево пусто.";
+        }
+
         StringBuilder sb = new StringBuilder();
-        toString(sb, root, "");
+        int treeHeight = getHeight(root);
+        int maxWidth = (int) Math.pow(2, treeHeight) - 1;
+        List<List<String>> levels = new ArrayList<>();
+
+        for (int i = 0; i < treeHeight; i++) {
+            List<String> level = new ArrayList<>(Collections.nCopies(maxWidth, "   "));
+            levels.add(level);
+        }
+
+        fillLevels(root, levels, 0, 0, maxWidth - 1);
+
+        for (List<String> level : levels) {
+            for (String node : level) {
+                sb.append(node);
+            }
+            sb.append("\n");
+        }
+
         return sb.toString();
     }
 
-    private void toString(StringBuilder sb, Node<E> node, String indent) {
-        if (node == null) {
+    private void fillLevels(Node<E> node, List<List<String>> levels, int level, int left, int right) {
+        if (node == null || level >= levels.size()) {
             return;
         }
-        if (node.rightChild != null) {
-            toString(sb, node.rightChild, indent + "   ");
-        }
-        sb.append(indent).append(node.value).append("\n");
 
-        if (node.leftChild != null) {
-            toString(sb, node.leftChild, indent + "   ");
+        int mid = (left + right) / 2;
+        levels.get(level).set(mid, String.format("%3s", node.value));
+
+        fillLevels(node.leftChild, levels, level + 1, left, mid - 1);
+        fillLevels(node.rightChild, levels, level + 1, mid + 1, right);
+    }
+
+    private int getHeight(Node<E> node) {
+        if (node == null) {
+            return 0;
         }
+        return 1 + Math.max(getHeight(node.leftChild), getHeight(node.rightChild));
     }
 }

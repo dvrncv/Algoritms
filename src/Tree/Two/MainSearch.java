@@ -1,4 +1,4 @@
-package Two;
+package Tree.Two;
 
 public class MainSearch {
     public static void main(String[] args) {
@@ -10,8 +10,10 @@ public class MainSearch {
         tree.insert(4.3);
         tree.insert(6.0);
         tree.insert(8.8);
+        tree.insert(6.0);
+
         System.out.println("Дерево:");
-        System.out.println(tree);
+        System.out.println(tree.asIndentedPreOrder(0));
 
         System.out.println("Проверка на существование вершины: ");
         System.out.println("Существует вершина 9.0: " + tree.contains(9.0));
@@ -23,10 +25,6 @@ public class MainSearch {
         System.out.println("Существует вершина 4.3: " + tree.contains(4.3));
         System.out.println("Существует вершина 6.0: " + tree.contains(6.0));
         System.out.println("Существует вершина 8.8: " + tree.contains(8.8));
-
-
-//        AbstractBinarySearchTree<Double> searchResult = tree.search(4.3);
-//        System.out.println("Поиск дерева с определенным элементом: " + searchResult.getValue());
 
 
         System.out.println(" ");

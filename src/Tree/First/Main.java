@@ -1,4 +1,4 @@
-package First;
+package Tree.First;
 
 import java.util.List;
 
@@ -7,7 +7,8 @@ public class Main {
         BinaryTree<Integer> tree = new BinaryTree<>(
                 1,
                 new BinaryTree<>(2, new BinaryTree<>(4, null, null), new BinaryTree<>(5, null, null)),
-                new BinaryTree<>(3, new BinaryTree<>(6, null, null), new BinaryTree<>(7, null, null)));
+                new BinaryTree<>(3, new BinaryTree<>(6, null, null), new BinaryTree<>(7,null,null))
+        );
 
         System.out.println("Tree structure:");
         System.out.println(tree);
@@ -27,10 +28,10 @@ public class Main {
         System.out.println("\n\nIn-order with Consumer:");
         tree.forEachInOrder(key -> System.out.print(key + " "));
 
-        System.out.println("\n\nDepth-First Search:");
+        System.out.println("\n\nDepth-Tree.First Search:");
         tree.depthFirstSearch();
 
-        System.out.println("\n\nBreadth-First Search:");
+        System.out.println("\n\nBreadth-Tree.First Search:");
         tree.breadthFirstSearch();
     }
 }
